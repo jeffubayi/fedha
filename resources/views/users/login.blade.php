@@ -11,22 +11,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        laravel: '#ef3b2d',
-                    },
-                },
-            },
-        }
-    </script>
     <title>Tailus | school management</title>
 </head>
 <style>
     .login_img_section {
-        background: linear-gradient(rgba(2, 2, 2, .7), rgba(0, 0, 0, .7)), url(https://images.unsplash.com/photo-1650825556125-060e52d40bd0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center;
+        background: linear-gradient(rgba(2, 2, 2, .7), rgba(0, 0, 0, .7)), url(https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60) center center;
     }
 
 </style>
@@ -54,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
+        <div class="flex w-full lg:w-1/2 justify-center items-center bg-white ">
 
 
 
@@ -82,7 +71,7 @@
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
                                 <input id="remember" type="checkbox" value=""
-                                    class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 "
+                                    class="w-4 h-4 bg-amber-700 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 "
                                     required="" value="{{ old('password') }}" />
 
                                 @error('password')
@@ -91,13 +80,13 @@
                             </div>
                             <label for="remember" class="ml-2 text-sm font-medium text-gray-900 ">Remember me</label>
                         </div>
-                        <a href="#" class="ml-auto text-sm text-blue-700 hover:underline ">Lost Password?</a>
+                        <a href="#" class="ml-auto text-sm text-amber-500 hover:underline ">Lost Password?</a>
                     </div>
                     <button type="submit"
-                        class="w-full text-white bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Login
+                        class="w-full text-white bg-gradient-to-r from-amber-500 to-amber-300 hover:bg-iamber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Login
                         to your account</button>
                     <div class="text-sm font-medium text-gray-500 ">
-                        Not registered? <a href="/register" class="text-sky-600  hover:underline ">Create account</a>
+                        Not registered? <a href="/register" class="text-amber-500 hover:underline ">Create account</a>
                     </div>
                 </form>
             </div>

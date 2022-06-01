@@ -14,7 +14,7 @@ $wordCount = count($listing);
                         class="w-auto h-12" />
                     <div>
                         <p class="font-semibold text-base">{{ $wordCount }}</p>
-                        <p class="font-semibold text-xs text-gray-400">Total Students</p>
+                        <p class="font-semibold text-xs text-gray-400">Total applicants</p>
                     </div>
                 </div>
 
