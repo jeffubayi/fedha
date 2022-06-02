@@ -100,11 +100,11 @@
             </div>
 
             <button
-                class="text-white bg-gradient-to-r from-amber-500 to-amber-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Register
+                class="text-white bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Register
                 new account</button>
             <div class="flex items-start mt-2">
                 <label for="terms" class="ml-2 text-sm font-medium text-gray-900 ">Already have an account?<a
-                        href="/login" class="text-amber-500  m-2">Login</a></label>
+                        href="/login" class="text-blue-600   m-2">Login</a></label>
 
             </div>
         </form>
