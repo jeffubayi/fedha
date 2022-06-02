@@ -2,7 +2,7 @@
     <div class="lg:grid lg:grid-cols-2 gap-2 space-y-4 md:space-y-0 mx-5 mt-1">
         <a href="/listing/create" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
             <button
-                class="flex rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 py-2 px-4 text-white transition-all duration-150 ease-in-out hover:bg-blue-600">
+                class="flex rounded-md bg-blue-600 py-2 px-4 text-white transition-all duration-150 ease-in-out hover:bg-blue-600">
                 <svg class=" fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     version="1.1" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
