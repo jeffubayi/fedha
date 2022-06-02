@@ -1,7 +1,7 @@
 <x-layout>
     <a href="/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
         <button
-            class="flex rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 py-2 px-4 text-white transition-all duration-150 ease-in-out hover:bg-blue-600">
+            class="flex rounded-md bg-blue-600 py-2 px-4 text-white transition-all duration-150 ease-in-out hover:bg-blue-600">
             <i class="fa-solid fa-arrow-left text-white  mt-1 fill-current"></i>
         </button>
     </a>
@@ -90,7 +90,7 @@
                 @enderror
             </div>
             <button
-                class="text-white bg-gradient-to-r from-sky-600 to-cyan-400   hover:bg-red-500  focus:ring-4 focus:outline-none focus:ring-cyan-500  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                class="text-white bg-blue-600   hover:bg-red-500  focus:ring-4 focus:outline-none focus:ring-cyan-500  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
         </form>
     </div>
 </x-layout>
