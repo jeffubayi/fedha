@@ -57,7 +57,7 @@
         <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
           
             <main class="py-4">
-                <div class="text-center">
+                <div class="text-center mb-3">
                     <img class="mx-auto w-48" src="https://fedha.co/wp-content/uploads/2021/01/Fedha_Logo_2-09.png"
                         alt="logo" />
                 </div>
