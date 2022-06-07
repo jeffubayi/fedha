@@ -1,13 +1,5 @@
 <?php
 
-use App\Models\Staff;
-use App\Models\Listing;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\ListingController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,55 +10,33 @@ use App\Http\Controllers\ListingController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-// get
-Route::get('/', [ListingController::class,'dashboard'])->middleware('auth');
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/summaries', 'HomeController@summary')->name('summary');
+Route::get('/monthly/index', 'HomeController@monthly')->name('monthly.index');
 
-// get
-Route::get('/register', [UserController::class,'create']);
-
-//post
-Route::post('/users',  [UserController::class,'store']);
-
-//logout
-Route::post('/logout',  [UserController::class,'logout'])->middleware('auth');
-
-// Show Login Form
-Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
-
-// Log In User
-Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+//Notes Route
+Route::get('/notes', 'NoteController@index')->name('notes.index');
+Route::get('/notes/create', 'NoteController@create')->name('notes.create');
+Route::post('/notes/store', 'NoteController@store')->name('notes.store');
+Route::get('/notes/edit/{id}', 'NoteController@edit')->name('notes.edit');
+Route::post('/notes/update', 'NoteController@update')->name('notes.update');
+Route::get('/notes/delete/{id}', 'NoteController@destroy')->name('notes.delete');
 
 
-// get
-Route::get('/dashboard', [ListingController::class,'index'])->middleware('auth');
+//Income Route
+Route::get('/incomes', 'IncomeController@index')->name('incomes.index');
+Route::get('/incomes/create', 'IncomeController@create')->name('incomes.create');
+Route::post('/incomes/store', 'IncomeController@store')->name('incomes.store');
+Route::get('/incomes/edit/{id}', 'IncomeController@edit')->name('incomes.edit');
+Route::post('/incomes/update', 'IncomeController@update')->name('incomes.update');
+Route::get('/incomes/delete/{id}', 'IncomeController@destroy')->name('incomes.delete');
 
-
-// get
-Route::get('/settings', [ListingController::class,'settings'])->middleware('auth');
-
-//post
-Route::post('/listing',  [ListingController::class,'store']);
-
-//create - create view
-Route::get('/listing/create',  [ListingController::class,'create'])->middleware('auth');
-
-
-//manage - manage view
-Route::get('/listing/manage',  [ListingController::class,'manage'])->middleware('auth');
-
-// show - Show view
-Route::get('/listing/{listing}',  [ListingController::class,'show']);
-
-
-// delete 
-Route::delete('/listing/{listing}',  [ListingController::class,'destroy'])->middleware('auth');
-
-//edit - edit view
-Route::get('/listing/{listing}/edit',  [ListingController::class,'edit'])->middleware('auth');
-
-
-// Update
-Route::put('/listing/{listing}', [ListingController::class, 'update'])->middleware('auth');
-
-// Route->Controller->Resource
+//Expense Route
+Route::get('/expense', 'ExpenseController@index')->name('expense.index');
+Route::get('/expense/create', 'ExpenseController@create')->name('expense.create');
+Route::post('/expense/store', 'ExpenseController@store')->name('expense.store');
+Route::get('/expense/edit/{id}', 'ExpenseController@edit')->name('expenses.edit');
+Route::post('/expense/update', 'ExpenseController@update')->name('expenses.update');
+Route::get('/expense/delete/{id}', 'ExpenseController@destroy')->name('expenses.delete');
