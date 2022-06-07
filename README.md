@@ -1,6 +1,6 @@
 ## Fedha
 
-Fedha is  an open source web application made with Laravel.Features of this software:
+Fedha is a web application that helps you keep track of your finances
 
 - Add, Edit, Delete Daily income,expense or any Note.
 - In the Dashboard you can see This month Cost with how many income, expense and balance also.
@@ -12,18 +12,12 @@ Fedha is  an open source web application made with Laravel.Features of this soft
 
 Clone this repository-
 ```sh
-git clone https://github.com/nayeemdev/incomeExpense.git
-```
-Goto incomeExpense Folde
-```sh
-cd incomeExpense
-```
-Copy .env.example to .env 
-```sh
+git clone https://github.com/nayeemdev/fedha.git
+
+cd fedha
+
 cp .env.example .env
-```
-Install composer for vendor file
-```sh
+
 composer install
 ```
 Create a database and set information to .env
@@ -39,10 +33,5 @@ php artisan serve
 ```
 GoTo [http://127.0.0.1:8000](http://127.0.0.1:8000) for visiting your income expense manager
 
-For Login:
-
-**email: admin@admin.com**
-
-**password: password**
 
 
