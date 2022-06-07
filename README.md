@@ -1,4 +1,4 @@
-## Fedha
+![](https://fedha.co/wp-content/uploads/2021/01/Fedha_Logo_2-09.png)
 
 Fedha is a web application that helps you keep track of your finances
 
