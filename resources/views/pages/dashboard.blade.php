@@ -19,7 +19,7 @@ $mytime = Carbon\Carbon::now();
             <a href="{{ route('incomes.index') }}"
                 class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
                 <div class="flex space-x-6 items-center">
-                    <img src="https://cdn-icons.flaticon.com/png/512/3258/premium/3258446.png?token=exp=1654690414~hmac=5ba3db1293fbc6acf11b56e91844e99f"
+                    <img src="https://cdn-icons.flaticon.com/png/512/2169/premium/2169853.png?token=exp=1654868763~hmac=7e8abc38bdee03671a6095238c042bee"
                         class="w-auto h-12" />
                     <div>
                         <p class="font-semibold text-base">{{ number_format($incomes, 2) }}</p>
@@ -42,7 +42,7 @@ $mytime = Carbon\Carbon::now();
             <a href="{{ route('summary') }}"
                 class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
                 <div class="flex space-x-6 items-center">
-                    <img src="https://cdn-icons.flaticon.com/png/512/913/premium/913376.png?token=exp=1654690465~hmac=4f1fd602a83f4fd00178c5013ef83bf9"
+                    <img src="https://cdn-icons.flaticon.com/png/512/924/premium/924913.png?token=exp=1654868871~hmac=2bc150e0b6e876ee53035504af7de221"
                         class="w-auto h-12" />
                     <div>
                         <p class="font-semibold text-base"> {{ number_format($balance, 2) }}</p>
