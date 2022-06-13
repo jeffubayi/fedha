@@ -2,58 +2,53 @@
 
 @section('content')
     <div class="container-fluid">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ route('index') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">
-                <a href="{{ route('expense.index') }}">Expense</a>
-            </li>
-            <li class="breadcrumb-item active">Edit</li>
-        </ol>
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show rounded" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span></button>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </div>
-        @endif
-        <div class="row">
-            <div class="col-xl-8 offset-2">
-                <div class="card mx-auto mt-5">
-                    <div class="card-header">Update Expense</div>
-                    <div class="card-body">
-                        <form action="{{ route('expenses.update') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="expense_id" value="{{ $expense->id }}">
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="text" id="expense_title" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" name="expense_title" value="{{ $expense->expense_title }}">
-                                    <label for="expense_title">Expense Description</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="number" step="any" min="0.01" id="expense_amount" class="form-control" placeholder="Password" required="required" name="expense_amount" value="{{ $expense->expense_amount }}">
-                                    <label for="expense_amount">Expense Amount</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="date" id="expense_date" class="form-control" placeholder="Password" required="required" name="expense_date" value="{{ $expense->expense_date }}">
-                                    <label for="expense_date">Expense Date</label>
-                                </div>
-                            </div>
-                            <div class="float-right">
-                                <a href="{{ route('expense.index') }}" class="btn btn-success">Back</a>
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <div class="breadcrumb">
+            <div class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
             </div>
         </div>
+    
+        <div class="max-w-2xl mx-auto bg-white rounded-lg  p-16">
+            <form action="{{ route('expenses.update') }}" method="POST">
+                @csrf
+                <div class="mb-6">
+                    <input type="hidden" name="expense_id" value="{{ $expense->id }}">
+                    <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">
+                        Description</label>
+                    <input type="text" id="description"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        value="{{ $expense->expense_title }}" name="expense_title">
+                    @error('description')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="grid gap-6 mb-6 lg:grid-cols-2">
+                    <div>
+                        <label for="expense_title" class="block mb-2 text-sm font-medium text-gray-900 ">
+                            Amount</label>
+                        <input type="text" name="expense_amount" id="company" value="{{ $expense->expense_amount }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        @error('expense_title')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 ">
+                            Date</label>
+                        <input type="text" name="expense_date" value="{{ date('Y-m-d') }}" id="title"
+                            value="{{ $expense->expense_date }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        @error('title')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+                <button type="submit"
+                    class="text-white  bg-blue-600    hover:bg-blue-500  focus:ring-4 focus:outline-none focus:ring-cyan-500  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Save</button>
+
+                <a href="{{ route('expense.index') }}"
+                    class="text-blue-600  bg-white     border border-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-600  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Cancel</a>
+            </form>
+        </div>
+
     </div>
 @endsection

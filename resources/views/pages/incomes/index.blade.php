@@ -1,61 +1,67 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container-fluid">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ route('index') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Income</li>
-        </ol>
-        @if (Session::has('message'))
-        <div class="alert alert-success alert-dismissible fade show rounded" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span></button> <i class="fa fa-info mx-2"></i>
-            <strong>{!! session('message') !!}</strong>
-        </div>
-        @endif
-
-        <div class="row">
-        	<div class="col-xl-6 offset-xl-3 col-sm-12 mb-3">
-        		<ul class="list-group">
-				  <li class="list-group-item d-flex justify-content-between align-items-center">
-				    <a href="{{ route('incomes.create') }}" class="badge badge-success p-2 mx-auto">Add New Income</a>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center">
-				    Total Income
-                      <span class="badge badge-primary badge-pill">{{ $totalIncomes }}</span>
-				  </li>
-				</ul>
-        	</div>
+    <div class="container-fluid px-8">
+        <div class=" py-3 flex justify-between ">
+            @include('layouts.partials.alert')
+            <a href="{{ route('incomes.create') }}">
+                <button type="submit"
+                    class="w-full text-white bg-blue-600  hover:bg-iamber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add
+                    New Income</button>
+            </a>
         </div>
 
-        <div class="row">
-            @foreach($incomes as $income)
-                <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="relative overflow-x-auto shadow-md  sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 ">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Id
+                        </th>
+                        <th scope="col" class="px-6 py-3 ">
+                            Description
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Amount
+                        </th>
 
-                    <div class="card text-white bg-info o-hidden h-100">
+                        <th scope="col" class="px-6 py-3">
+                            Date
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                </thead>
+                @foreach ($incomes as $income)
+                    <tbody>
+                        <tr class="bg-white border-b ">
+                            <td class="px-6 py-4">
+                                {{ $income->id }}
+                            </td>
 
-                        <div class="card-header">
-                            <span class="float-left text-dark">{{ $income->income_date }}</span>
-                            <span class="btn-group-sm float-right">
-                                <a href="{{ route('incomes.edit',$income->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
-                                <a href="{{ route('incomes.delete',$income->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                            </span>
-                        </div>
+                            <td class="px-6 py-4 font-medium ">
+                                {{ $income->income_title }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $income->income_amount }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $income->income_date }}
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{{ route('incomes.edit', $income->id) }}"
+                                    class="font-medium text-blue-600 ">Edit</a>
+                            </td>
+                        </tr>
 
-                        <div class="card-body">
-                            <div class="card-body-icon mt-5">
-                                <i class="fas fa-fw fa-dollar-sign"></i>
-                            </div>
-                            <div>{{ $income->income_title }}</div>
-                            <div class="font-weight-bold"><span style="font-weight:900;">৳ </span> {{ $income->income_amount }}</div>
-                        </div>
-
-                    </div>
-
-                </div>
-            @endforeach
+                    </tbody>
+                @endforeach
+                <td class="px-6 py-4 font-bold justify-items-end ">
+                    Total
+                    <span class="ml-1 font-medium"> {{ $totalIncomes }}</span>
+                </td>
+            </table>
             <div class="col-xl-12 col-sm-12">
                 {{ $incomes->links() }}
             </div>

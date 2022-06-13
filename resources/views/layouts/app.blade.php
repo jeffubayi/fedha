@@ -11,17 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        laravel: '#ef3b2d',
-                    },
-                },
-            },
-        }
-    </script>
+    <link href="/css/app.css" rel="stylesheet">
     <title>Fedha | Sign up</title>
 </head>
 <style>
@@ -65,6 +55,7 @@
             </main>
         </div>
     </div>
+    
 </body>
-
+<script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 </html>

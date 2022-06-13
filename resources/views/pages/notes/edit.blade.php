@@ -2,58 +2,51 @@
 
 @section('content')
     <div class="container-fluid">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ route('index') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">
-                <a href="{{ route('notes.index') }}">Note</a>
-            </li>
-            <li class="breadcrumb-item active">Edit</li>
-        </ol>
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show rounded" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span></button>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+        <div class="breadcrumb">
+            <div class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
             </div>
-        @endif
-        <div class="row">
-            <div class="col-xl-8 offset-2">
-                <div class="card mx-auto mt-5">
-                    <div class="card-header">Update Note</div>
-                    <div class="card-body">
-                        <form action="{{ route('notes.update') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="note_id" value="{{ $note->id }}">
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="text" id="note_title" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" name="note_title" value="{{ $note->note_title }}">
-                                    <label for="note_title">Note Description</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="number" step="any" min="0.01" id="note_amount" class="form-control" placeholder="Password" required="required" name="note_amount" value="{{ $note->note_amount }}">
-                                    <label for="note_amount">Note Amount</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="date" id="note_date" class="form-control" placeholder="Password" required="required" name="note_date" value="{{ $note->note_date }}">
-                                    <label for="note_date">Note Date</label>
-                                </div>
-                            </div>
-                            <div class="float-right">
-                                <a href="{{ route('notes.index') }}" class="btn btn-success">Back</a>
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                        </form>
+        </div>
+
+        <div class="max-w-2xl mx-auto bg-white rounded-lg  p-16">
+            <form action="{{ route('notes.update') }}" method="POST">
+                @csrf
+                <div class="mb-6">
+                    <input type="hidden" name="note_id" value="{{ $note->id }}">
+                    <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">
+                        Description</label>
+                    <input type="text" id="description"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        name="note_title" value="{{ $note->note_title }}">
+                    @error('note_title')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="grid gap-6 mb-6 lg:grid-cols-2">
+                    <div>
+                        <label for="expense_title" class="block mb-2 text-sm font-medium text-gray-900 ">
+                            Amount</label>
+                        <input type="text" name="note_amount" value="{{ $note->note_amount }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        @error('note_amount')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 ">
+                            Date</label>
+                        <input type="text" name="note_date" value="{{ $note->note_date }}" id="title"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        @error('note_date')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
-            </div>
+                <button type="submit"
+                    class="text-white  bg-blue-600    hover:bg-blue-500  focus:ring-4 focus:outline-none focus:ring-cyan-500  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Save</button>
+
+                <a href="{{ route('notes.index') }}"
+                    class="text-blue-600  bg-white     border border-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-600  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Cancel</a>
+            </form>
         </div>
     </div>
 @endsection

@@ -1,39 +1,4 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Fedha - Finance Manager</title>
-    <!-- Custom fonts for this template-->
-    <link href="{{ asset('dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- Custom styles for this template-->
-    <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet">
-    @stack('css')
-</head>
-<body id="page-top">
-    @include('layouts.partials.header')
-    <div id="wrapper">
-            <!-- Sidebar -->
-        @include('layouts.partials.sidebar')
-        <div id="content-wrapper">
-            @yield('content')
-            @include('layouts.partials.calculator')
-            <!-- /.container-fluid -->
-            <!-- Sticky Footer -->
-            @include('layouts.partials.footer')
-        </div>
-        <!-- /.content-wrapper -->
-    </div>
-    <script src="{{ asset('dashboard/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('dashboard/js/script.js') }}"></script>
-    @stack('js')
-</body>
-</html> --}}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +12,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/css/app.css" rel="stylesheet">
     <title>fedha | finance manager</title>
 </head>
 
@@ -63,7 +29,7 @@
                 </div>
 
                 <div class="mt-8 text-center">
-                    <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp" alt=""
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgSmojUgwjIB87c4Q0hLCAyl__oiTySWGWJUZtUNHlHjBALLzTsu_vMHYMaEwLts4QEoo&usqp=CAU" alt=""
                         class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28">
                     <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">{{ auth()->user()->name }}
                     </h5>
@@ -100,6 +66,7 @@
         </div>
 
     @endauth
+    
 </body>
-
+<script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 </html>

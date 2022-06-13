@@ -1,49 +1,34 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container-fluid">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ route('index') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Notes</li>
-        </ol>
+<div class="container-fluid px-8">
+    <div class=" py-3 flex justify-between ">
+        @include('layouts.partials.alert')
+        <a href="{{ route('notes.create') }}">
+            <button type="submit"
+                class="w-full text-white bg-blue-600  hover:bg-iamber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add
+                New Notes</button>
+        </a>
+    </div>
 
-        @if (Session::has('message'))
-        <div class="alert alert-success alert-dismissible fade show rounded" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span></button> <i class="fa fa-info mx-2"></i>
-            <strong>{!! session('message') !!}</strong>
-        </div>
-        @endif
+        <div
+            class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-5 xxl:col-span-5 grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-5">
+            @foreach ($notes as $note)
+              
 
-        <div class="row">
-        	<div class="col-xl-6 offset-xl-3 col-sm-12 mb-3">
-        		<ul class="list-group">
-				  <li class="list-group-item d-flex justify-content-between align-items-center">
-				    <a href="{{ route('notes.create') }}" class="badge badge-success p-2 mx-auto" >Add New Note</a>
-				  </li>
-				</ul>
-        	</div>
-        </div>
+                <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md ">
+                    <div class="flex justify-end px-4 pt-6">
+                        
+                    </div>
+                    <div class="flex flex-col items-center pb-10">
 
-        <div class="row">
-            @foreach($notes as $note)
-                <div class="col-xl-4 col-sm-6 mb-3">
-                    <div class="card text-white bg-info o-hidden h-100">
-                        <div class="card-header">
-                            <span class="float-left">{{ $note->note_date }}</span>
-                            <span class="btn-group-sm float-right">
-                                <a href="{{ route('notes.edit',$note->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
-                                <a href="{{ route('notes.delete',$note->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                            </span>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-body-icon mt-5">
-                                <i class="fas fa-fw fa-sticky-note"></i>
-                            </div>
-                            <div>{{ $note->note_title }}</div>
-                            <div>{{ $note->note_amount }}</div>
+                        <h5 class="mb-1 text-xl font-medium text-gray-900 ">{{ $note->note_title }}</h5>
+                        <span class="text-sm text-gray-500">{{ $note->note_amount }}</span>
+                        <div class="flex mt-4 space-x-3 lg:mt-6">
+                            <a href="{{ route('notes.edit', $note->id) }}"
+                                class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-blue-600  bg-white     border border-blue-700 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 ">Edit</a>
+                            <a href="{{ route('notes.delete', $note->id) }}"
+                                class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-red-500 bg-white rounded-lg border border-red-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 ">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -52,4 +37,4 @@
                 {{ $notes->links() }}
             </div>
         </div>
-@endsection
+    @endsection

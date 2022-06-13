@@ -2,57 +2,57 @@
 
 @section('content')
     <div class="container-fluid">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ route('index') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">
-                <a href="{{ route('incomes.index') }}">Income</a>
-            </li>
-            <li class="breadcrumb-item active">Insert</li>
-        </ol>
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show rounded" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </div>
-        @endif
-        <div class="row">
-            <div class="col-xl-8 offset-2">
-                <div class="card mx-auto mt-5">
-                    <div class="card-header">Insert New Income</div>
-                    <div class="card-body">
-                        <form action="{{ route('incomes.store') }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="text" id="income_title" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" name="income_title">
-                                    <label for="income_title">Income Description</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="number" step="any" min="0.01" id="income_amount" class="form-control" placeholder="Password" required="required" name="income_amount">
-                                    <label for="income_amount">Income Amount</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-label-group">
-                                    <input type="date" id="income_date" class="form-control" placeholder="Income Date" required="required" name="income_date" value="{{ date('Y-m-d') }}">
-                                    <label for="income_date">Income Date</label>
-                                </div>
-                            </div>
-                            <div class="float-right">
-                                <a href="{{ route('incomes.index') }}" class="btn btn-success">Back</a>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <div class="breadcrumb">
+            <div class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
             </div>
         </div>
+        <div class="max-w-2xl mx-auto bg-white rounded-lg  p-16">
+
+
+            <form method="POST" action="{{ route('incomes.store') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-6">
+                    <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">
+                        Description</label>
+                    <input type="text" id="description"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        name="income_title">
+                    @error('income_title')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="grid gap-6 mb-6 lg:grid-cols-2">
+                    <div>
+                        <label for="income_title" class="block mb-2 text-sm font-medium text-gray-900 ">
+                            Amount</label>
+                        <input type="text" name="income_amount" id="company"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        @error('income_amount')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 ">
+                            Date</label>
+                        <input type="text" name="income_date" value="{{ date('Y-m-d') }}" id="title"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        @error('income_date')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+
+
+                <button
+                    class="text-white  bg-blue-600    hover:bg-blue-500  focus:ring-4 focus:outline-none focus:ring-cyan-500  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Save</button>
+
+
+                <a href="{{ route('incomes.index') }}"
+                    class="text-blue-600  bg-white     border border-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-600  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Cancel</a>
+
+            </form>
+        </div>
+
     </div>
 @endsection
