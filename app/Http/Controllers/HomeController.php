@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Note;
 Use Auth;
+use Illuminate\Http\Request;
 use Illuminate\support\Carbon;
 Use App\Models\Income;
 Use App\Models\Expense;
@@ -25,11 +26,25 @@ class HomeController extends Controller
 
         $data['incomes'] = Income::where('user_id', Auth::User()->id)->sum('income_amount');
         $data['expenses'] = Expense::where('user_id', Auth::User()->id)->sum('expense_amount');
+        $data['notes'] =  Note::where('user_id', Auth::User()->id)->count();
+        $data['incomeCount'] =  Income::where('user_id', Auth::User()->id)->count();
+        $data['expenseCount'] =  Expense::where('user_id', Auth::User()->id)->count();
         $data['balance'] = $data['incomes'] - $data['expenses'];
         $data['latests']= Expense::where('user_id', Auth::user()->id)->latest()->paginate(5);
 
         return view('pages.dashboard', $data);
     }
+
+    public function setting()
+    {
+        $data['incomes'] = Income::where('user_id', Auth::User()->id)->sum('income_amount');
+        $data['notes'] =  Note::where('user_id', Auth::User()->id)->count();
+        $data['expenses'] = Expense::where('user_id', Auth::User()->id)->sum('expense_amount');
+        $data['balance'] = $data['incomes'] - $data['expenses'];
+        return view('pages.setting', $data);
+    }
+
+    
 
     public function summary()
     {
