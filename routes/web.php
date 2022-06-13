@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
+Route::get('/setting', 'HomeController@setting')->name('setting');
 Route::get('/summaries', 'HomeController@summary')->name('summary');
 Route::get('/monthly/index', 'HomeController@monthly')->name('monthly.index');
 
